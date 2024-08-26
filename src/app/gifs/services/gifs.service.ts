@@ -47,7 +47,7 @@ export class GifsService {
     const params = new HttpParams()
       .set('api_key', GIPHY_API_KEY)
       .set('q', tag)
-      .set('limit', '2');
+      .set('limit', '10');
 
     console.log(this._history);
 
