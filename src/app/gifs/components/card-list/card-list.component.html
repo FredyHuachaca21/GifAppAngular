@@ -3,11 +3,9 @@
   *ngFor="let gif of gifs"
   >
     <div class="card mb-2 text-center bg-dark" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
+      <img [src]="gif.images.original.url" class="card-img-top" [alt]="gif.title">
       <div class="card-body text-white">
-        <!-- <h5 class="card-title">{{gif.username}}</h5> -->
         <p class="card-text">{{gif.title}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
   </div>
