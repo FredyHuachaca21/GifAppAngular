@@ -4,7 +4,9 @@
   <hr class="text-white">
 
   <div class="list-group list-reset">
-    <button class="list-group-item list-group-item-action">historial</button>
+    <button class="list-group-item list-group-item-action"
+    *ngFor="let tag of tags"
+    >{{tag | titlecase}}</button>
   </div>
 </div>
 
