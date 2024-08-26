@@ -1,8 +1,13 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+const GIPHY_API_KEY = 'Aj33zfCoFlIpUlGTKp3Q4tJw4D5wZE2J';
+const GIPHY_BASE_URL = 'https://api.giphy.com/v1/gifs';
 
 @Injectable({providedIn: 'root'})
 export class GifsService {
-  constructor() { }
+
+  constructor(private httpClient: HttpClient) { }
 
   private _history: string[] = [];
 
@@ -35,7 +40,17 @@ export class GifsService {
     if ( tag.length === 0 ) return;
     this.organizeHistory(tag);
 
+    const params = new HttpParams()
+      .set('api_key', GIPHY_API_KEY)
+      .set('q', tag)
+      .set('limit', '2');
+
     console.log(this._history);
+
+    this.httpClient.get(`${GIPHY_BASE_URL}/search`, {params})
+    .subscribe((response) => {
+      console.log(response);
+    });
 
   }
 

@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { GifsModule } from './gifs/gifs.module';
 import { SharedModule } from './shared/shared.module';
 
+import { provideHttpClient } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -18,7 +20,9 @@ import { AppComponent } from './app.component';
     GifsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
