@@ -11,7 +11,11 @@ export class GifsService {
 
   private _history: string[] = [];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.loadLocalStorage();
+    console.log('se cargó el historial', this._history);
+
+  }
 
 
 
@@ -43,6 +47,21 @@ export class GifsService {
 
   private saveLocalStorage(): void {
     localStorage.setItem('history', JSON.stringify(this._history));
+  }
+
+
+
+  private loadLocalStorage(): void {
+
+    // Verifica si existe el historial en el localStorage
+    if (!localStorage.getItem('history')) return;
+    // Carga el historial del localStorage
+    this._history = JSON.parse(localStorage.getItem('history')!);
+    // Valida que el historial no esté vacío
+    if ( this._history.length === 0 ) return;
+    // Carga el último tag del historial
+    this.searchTag(this._history[0]);
+
   }
 
 
