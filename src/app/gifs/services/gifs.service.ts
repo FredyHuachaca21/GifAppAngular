@@ -35,6 +35,14 @@ export class GifsService {
 
     // Limita el historial a 10 elementos
     this._history = this._history.splice(0, 10);
+
+    // Guarda el historial en el localStorage
+    this.saveLocalStorage();
+
+  }
+
+  private saveLocalStorage(): void {
+    localStorage.setItem('history', JSON.stringify(this._history));
   }
 
 
